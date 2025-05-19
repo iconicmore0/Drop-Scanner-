@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Airdrop Scan Evaluator</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+    h1 { font-size: 20px; margin-bottom: 10px; }
+    input[type="file"] { margin-bottom: 15px; }
+    .result { margin-top: 20px; padding: 15px; border-radius: 8px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+    .label { font-size: 18px; font-weight: bold; }
+    .label.recommended { color: green; }
+    .label.notbad { color: orange; }
+    .label.norecommend { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Upload Gambar Airdrop</h1>
+  <input type="file" accept="image/*" onchange="showPreview(event)">
+  <div id="preview"></div>
+  <div class="result" id="scanResult" style="display:none;">
+    <p><strong>Nama Proyek:</strong> Contoh Airdrop AI</p>
+    <p><strong>Kategori:</strong> AI</p>
+    <p><strong>Tugas:</strong> Upload + Discord Role</p>
+    <p><strong>Perkiraan Waktu:</strong> 5 menit</p>
+    <p><strong>Investor:</strong> Ada</p>
+    <p class="label recommended">🟢 Recommended</p>
+  </div>
+  <script>
+    function showPreview(event) {
+      const preview = document.getElementById('preview');
+      const scanResult = document.getElementById('scanResult');
+      preview.innerHTML = '';
+      const file = event.target.files[0];
+      if(file) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.style.maxWidth = "100%";
+        img.style.marginBottom = "15px";
+        preview.appendChild(img);
+        scanResult.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
